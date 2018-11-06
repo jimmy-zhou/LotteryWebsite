@@ -10,7 +10,7 @@ public class State {
 
 	@Id
 	private int state_id;
-	
+
 	private double tax_rate;
 	private String state_name;
 

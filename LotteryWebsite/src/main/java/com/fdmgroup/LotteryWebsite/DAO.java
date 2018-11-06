@@ -5,7 +5,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 
 public class DAO<T> {
-	
+
 	private EntityManagerFactory emf;
 
 	public DAO(EntityManagerFactory emf) {
@@ -21,7 +21,7 @@ public class DAO<T> {
 		em.close();
 	}
 
-	public Player get(int player_id) {
+	public Player getPlayer(int player_id) {
 		EntityManager em = emf.createEntityManager();
 		Player returned_player = em.find(Player.class, player_id);
 		em.close();

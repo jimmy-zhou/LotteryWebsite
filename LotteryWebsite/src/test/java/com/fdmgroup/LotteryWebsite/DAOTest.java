@@ -33,6 +33,28 @@ public class DAOTest {
 	}
 
 	@Test
+	public void adding_state_persists_and_cleans_up_resources() {
+		EntityManagerFactory mockEmf = mock(EntityManagerFactory.class);
+		EntityManager mockEm = mock(EntityManager.class);
+		EntityTransaction mockEt = mock(EntityTransaction.class);
+		State mockState = mock(State.class);
+
+		when(mockEmf.createEntityManager()).thenReturn(mockEm);
+		when(mockEm.getTransaction()).thenReturn(mockEt);
+
+		DAO<State> stateDAO = new DAO<State>(mockEmf);
+		stateDAO.add(mockState);
+
+		verify(mockEmf).createEntityManager();
+		verify(mockEm).getTransaction();
+		verify(mockEt).begin();
+		verify(mockEm).persist(mockState);
+		verify(mockEt).commit();
+		verify(mockEm).close();
+
+	}
+
+	@Test
 	public void getting_player_retrieves_player_and_cleans_up_resources() {
 		EntityManagerFactory mockEmf = mock(EntityManagerFactory.class);
 		EntityManager mockEm = mock(EntityManager.class);
@@ -42,7 +64,7 @@ public class DAOTest {
 		when(mockEm.getTransaction()).thenReturn(mockEt);
 
 		DAO<Player> playerDAO = new DAO<Player>(mockEmf);
-		playerDAO.get(1);
+		playerDAO.getPlayer(1);
 
 		InOrder order = inOrder(mockEmf, mockEm);
 		order.verify(mockEmf).createEntityManager();
@@ -50,4 +72,5 @@ public class DAOTest {
 		order.verify(mockEm).close();
 
 	}
+
 }
