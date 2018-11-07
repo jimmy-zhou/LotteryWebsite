@@ -1,7 +1,6 @@
 package com.fdmgroup.LotteryWebsite;
 
-import java.util.Arrays;
-
+import java.sql.Date;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -13,16 +12,16 @@ public class Bet {
 	@Id
 	private int bet_id;
 
-	private int player_id;
-	private int draw_id;
-	private int[] main_number;
+	private String username;
+	private Date date;
+	private String main_number;
 	private int powerball_number;
 
-	public Bet(int bet_id, int player_id, int draw_id, int[] main_number, int powerball_number) {
+	public Bet(int bet_id, String username, Date date, String main_number, int powerball_number) {
 		super();
 		this.bet_id = bet_id;
-		this.player_id = player_id;
-		this.draw_id = draw_id;
+		this.username = username;
+		this.date = date;
 		this.main_number = main_number;
 		this.powerball_number = powerball_number;
 	}
@@ -33,8 +32,8 @@ public class Bet {
 
 	@Override
 	public String toString() {
-		return "Bet [bet_id=" + bet_id + ", player_id=" + player_id + ", draw_id=" + draw_id + ", main_number="
-				+ Arrays.toString(main_number) + ", powerball_number=" + powerball_number + "]";
+		return "Bet [bet_id=" + bet_id + ", username=" + username + ", date=" + date + ", main_number=" + main_number
+				+ ", powerball_number=" + powerball_number + "]";
 	}
 
 	public int getBet_id() {
@@ -45,27 +44,27 @@ public class Bet {
 		this.bet_id = bet_id;
 	}
 
-	public int getPlayer_id() {
-		return player_id;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setPlayer_id(int player_id) {
-		this.player_id = player_id;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
-	public int getDraw_id() {
-		return draw_id;
+	public Date getDate() {
+		return date;
 	}
 
-	public void setDraw_id(int draw_id) {
-		this.draw_id = draw_id;
+	public void setDate(Date date) {
+		this.date = date;
 	}
 
-	public int[] getMain_number() {
+	public String getMain_number() {
 		return main_number;
 	}
 
-	public void setMain_number(int[] main_number) {
+	public void setMain_number(String main_number) {
 		this.main_number = main_number;
 	}
 

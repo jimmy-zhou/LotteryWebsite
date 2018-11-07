@@ -9,16 +9,14 @@ import javax.persistence.Table;
 public class State {
 
 	@Id
-	private int state_id;
-
-	private double tax_rate;
 	private String state_name;
+	
+	private double tax_rate;
 
-	public State(int state_id, double tax_rate, String state_name) {
+	public State(String state_name, double tax_rate) {
 		super();
-		this.state_id = state_id;
-		this.tax_rate = tax_rate;
 		this.state_name = state_name;
+		this.tax_rate = tax_rate;
 	}
 
 	public State() {
@@ -27,15 +25,7 @@ public class State {
 
 	@Override
 	public String toString() {
-		return "State [state_id=" + state_id + ", tax_rate=" + tax_rate + ", state_name=" + state_name + "]";
-	}
-
-	public int getState_id() {
-		return state_id;
-	}
-
-	public void setState_id(int state_id) {
-		this.state_id = state_id;
+		return "State [state_name=" + state_name + ", tax_rate=" + tax_rate + "]";
 	}
 
 	public double getTax_rate() {

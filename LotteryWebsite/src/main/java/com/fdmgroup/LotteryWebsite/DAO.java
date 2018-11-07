@@ -27,5 +27,12 @@ public class DAO<T> {
 		em.close();
 		return returned_player;
 	}
+	
+	public State getState(String state_name) {
+		EntityManager em = emf.createEntityManager();
+		State returned_state = em.find(State.class, state_name);
+		em.close();
+		return returned_state;
+	}
 
 }
