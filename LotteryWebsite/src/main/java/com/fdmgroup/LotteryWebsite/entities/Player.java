@@ -1,4 +1,4 @@
-package com.fdmgroup.LotteryWebsite;
+package com.fdmgroup.LotteryWebsite.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

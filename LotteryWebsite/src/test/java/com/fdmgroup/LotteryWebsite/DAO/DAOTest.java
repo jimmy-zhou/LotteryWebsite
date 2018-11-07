@@ -1,4 +1,4 @@
-package com.fdmgroup.LotteryWebsite;
+package com.fdmgroup.LotteryWebsite.DAO;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -7,6 +7,10 @@ import static org.mockito.Mockito.*;
 
 import org.junit.Test;
 import org.mockito.InOrder;
+
+import com.fdmgroup.LotteryWebsite.DAO.DAO;
+import com.fdmgroup.LotteryWebsite.entities.Player;
+import com.fdmgroup.LotteryWebsite.entities.State;
 
 public class DAOTest {
 
@@ -64,11 +68,11 @@ public class DAOTest {
 		when(mockEm.getTransaction()).thenReturn(mockEt);
 
 		DAO<Player> playerDAO = new DAO<Player>(mockEmf);
-		playerDAO.getPlayer(1);
+		playerDAO.getPlayer("jimmy66666");
 
 		InOrder order = inOrder(mockEmf, mockEm);
 		order.verify(mockEmf).createEntityManager();
-		order.verify(mockEm).find(Player.class, 1);
+		order.verify(mockEm).find(Player.class, "jimmy66666");
 		order.verify(mockEm).close();
 
 	}

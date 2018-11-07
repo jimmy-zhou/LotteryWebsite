@@ -6,47 +6,75 @@ import java.util.Random;
 
 import javax.persistence.*;
 
+import com.fdmgroup.LotteryWebsite.DAO.DAO;
+import com.fdmgroup.LotteryWebsite.entities.Bet;
+import com.fdmgroup.LotteryWebsite.entities.Draw;
+import com.fdmgroup.LotteryWebsite.entities.Player;
+import com.fdmgroup.LotteryWebsite.entities.State;
+
 public class App {
 
 	public static void main(String[] args) {
 
-	 EntityManagerFactory emf =
-	 Persistence.createEntityManagerFactory("lotteryWebsite");
-	 DAO<Player> playerDAO = new DAO<Player>(emf);
-	
-	 Player p1 = new Player("jimmy66666", "NY", "Jimmy", "Zhou", "welcome123", 5367225573712894L);
-	 Player p2 = new Player("codingMaster", "CA", "Darren", "Ng", "passpass", 3769884753129946L);
-	 Player p3 = new Player("bigChris", "NJ", "Chris", "Spencer", "shijielong", 4399500021425476L);
-	
-	 playerDAO.add(p1);
-	 playerDAO.add(p2);
-	 playerDAO.add(p3);
-	
-//	 System.out.println(pickMainNumber());
-	
-	 DAO<State> stateDAO = new DAO<State>(emf);
-	 State s1 = new State("NY", 8.875);
-	 State s2 = new State("CA", 10.25);
-	 State s3 = new State("NJ", 12.875);
-	
-	 stateDAO.add(s1);
-	 stateDAO.add(s2);
-	 stateDAO.add(s3);
-	
-	 Calendar calendar = Calendar.getInstance();
-	 calendar.set(2018, 10, 07);
-	 Date date1 = new Date(calendar.getTime().getTime());
-	 System.out.println(date1);
-//	 DAO<Bet> betDAO = new DAO<Bet>(emf);
-//	 Bet b1 = new Bet(1, "jimmy66666", date1, pickMainNumber(), pickPowerBallNumber());
-//	 Bet b2 = new Bet(2, "jimmy66666", date1, pickMainNumber(), pickPowerBallNumber());
-//	 Bet b3 = new Bet(3, "bigChris", date1, pickMainNumber(), pickPowerBallNumber());
-//	
-//	 betDAO.add(b1);
-//	 betDAO.add(b2);
-//	 betDAO.add(b3);
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("lotteryWebsite");
+		DAO<Player> playerDAO = new DAO<Player>(emf);
 
-	 System.out.println(pickPowerBallNumber());
+		Player p1 = new Player("jimmy66666", "NY", "Jimmy", "Zhou", "welcome123", 5367225573712894L);
+		Player p2 = new Player("codingMaster", "CA", "Darren", "Ng", "passpass", 3769884753129946L);
+		Player p3 = new Player("bigChris", "NJ", "Chris", "Spencer", "shijielong", 4399500021425476L);
+
+		playerDAO.add(p1);
+		playerDAO.add(p2);
+		playerDAO.add(p3);
+
+		DAO<State> stateDAO = new DAO<State>(emf);
+		State s1 = new State("NY", 8.875);
+		State s2 = new State("CA", 10.25);
+		State s3 = new State("NJ", 12.875);
+		State s4 = new State("WA", 10.4);
+		State s5 = new State("SC", 9);
+		State s6 = new State("PA", 8);
+		State s7 = new State("FL", 7.5);
+		State s8 = new State("VA", 6);
+		State s9 = new State("OR", 0);
+		State s10 = new State("AZ", 10.725);
+
+		stateDAO.add(s1);
+		stateDAO.add(s2);
+		stateDAO.add(s3);
+		stateDAO.add(s4);
+		stateDAO.add(s5);
+		stateDAO.add(s6);
+		stateDAO.add(s7);
+		stateDAO.add(s8);
+		stateDAO.add(s9);
+		stateDAO.add(s10);
+
+		Calendar calendar = Calendar.getInstance();
+		calendar.set(2018, 10, 03);
+		Date date1 = new Date(calendar.getTime().getTime());
+		calendar.set(2018, 10, 10);
+		Date date2 = new Date(calendar.getTime().getTime());
+		DAO<Bet> betDAO = new DAO<Bet>(emf);
+		Bet b1 = new Bet(1, "jimmy66666", date1, pickMainNumber(), pickPowerBallNumber());
+		Bet b2 = new Bet(2, "jimmy66666", date2, pickMainNumber(), pickPowerBallNumber());
+		Bet b3 = new Bet(3, "bigChris", date1, pickMainNumber(), pickPowerBallNumber());
+
+		betDAO.add(b1);
+		betDAO.add(b2);
+		betDAO.add(b3);
+
+		DAO<Draw> drawDAO = new DAO<Draw>(emf);
+		Draw d1 = new Draw(date1, pickMainNumber(), pickPowerBallNumber(), 1000);
+		Draw d2 = new Draw(date2, pickMainNumber(), pickPowerBallNumber(), 10000);
+		drawDAO.add(d1);
+		drawDAO.add(d2);
+		
+		System.out.println(playerDAO.getPlayer("jimmy66666"));
+		System.out.println(stateDAO.getState("AZ"));
+		System.out.println(betDAO.getBet(2));
+		System.out.println(drawDAO.getDraw(date2));
+
 	}
 
 	public static String pickMainNumber() {

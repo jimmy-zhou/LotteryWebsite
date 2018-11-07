@@ -1,4 +1,4 @@
-package com.fdmgroup.LotteryWebsite;
+package com.fdmgroup.LotteryWebsite.entities;
 
 import java.sql.Date;
 import javax.persistence.Entity;
@@ -10,7 +10,7 @@ import javax.persistence.Table;
 public class Draw {
 
 	@Id
-	private Date date;
+	private Date draw_date;
 
 	private String main_number;
 	private int powerball_number;
@@ -24,26 +24,26 @@ public class Draw {
 		this.main_number = main_number;
 	}
 
-	@Override
-	public String toString() {
-		return "Draw [date=" + date + ", main_number=" + main_number + ", powerball_number=" + powerball_number
-				+ ", accumulated_prize=" + accumulated_prize + "]";
-	}
-
-	public Draw(Date date, String main_number, int powerball_number, int accumulated_prize) {
+	public Draw(Date draw_date, String main_number, int powerball_number, int accumulated_prize) {
 		super();
-		this.date = date;
+		this.draw_date = draw_date;
 		this.main_number = main_number;
 		this.powerball_number = powerball_number;
 		this.accumulated_prize = accumulated_prize;
 	}
 
-	public Date getDate() {
-		return date;
+	public Date getDraw_date() {
+		return draw_date;
 	}
 
-	public void setDate(Date date) {
-		this.date = date;
+	public void setDraw_date(Date draw_date) {
+		this.draw_date = draw_date;
+	}
+
+	@Override
+	public String toString() {
+		return "Draw [draw_date=" + draw_date + ", main_number=" + main_number + ", powerball_number="
+				+ powerball_number + ", accumulated_prize=" + accumulated_prize + "]";
 	}
 
 	public int getPowerball_number() {
