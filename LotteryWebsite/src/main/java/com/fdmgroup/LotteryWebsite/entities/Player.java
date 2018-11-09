@@ -12,24 +12,26 @@ public class Player {
 
 	@Id
 	private String username;
-	
-	private String state_name;
-	
+
+	@ManyToOne
+	@JoinColumn(name = "state_name")
+	private State state;
+
 	private String first_name;
 	private String last_name;
-	
-	private String password;
-	private long credit_card_number;
 
-	public Player(String username, String state_name, String first_name, String last_name, String password,
-			long credit_card_number) {
+	private String password;
+	private String credit_card;
+
+	public Player(String username, State state, String first_name, String last_name, String password,
+			String credit_card) {
 		super();
 		this.username = username;
-		this.state_name = state_name;
+		this.state = state;
 		this.first_name = first_name;
 		this.last_name = last_name;
 		this.password = password;
-		this.credit_card_number = credit_card_number;
+		this.credit_card = credit_card;
 	}
 
 	public Player() {
@@ -38,19 +40,16 @@ public class Player {
 
 	@Override
 	public String toString() {
-		return "Player [username=" + username + ", state_name=" + state_name + ", first_name=" + first_name
-				+ ", last_name=" + last_name + ", password=" + password + ", credit_card_number=" + credit_card_number
-				+ "]";
+		return "Player [username=" + username + ", state=" + state + ", first_name=" + first_name + ", last_name="
+				+ last_name + ", password=" + password + ", credit_card=" + credit_card + "]";
 	}
 
-	@ManyToOne
-	@JoinColumn(name = "state_name")
-	public String getState_name() {
-		return state_name;
+	public State getState() {
+		return state;
 	}
 
-	public void setState_name(String state_name) {
-		this.state_name = state_name;
+	public void setState(State state) {
+		this.state = state;
 	}
 
 	public String getFirst_name() {
@@ -85,12 +84,12 @@ public class Player {
 		this.password = password;
 	}
 
-	public long getCredit_card_number() {
-		return credit_card_number;
+	public String getCredit_card() {
+		return credit_card;
 	}
 
-	public void setCredit_card_number(long credit_card_number) {
-		this.credit_card_number = credit_card_number;
+	public void setCredit_card(String credit_card) {
+		this.credit_card = credit_card;
 	}
 
 }

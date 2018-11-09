@@ -1,9 +1,10 @@
 package com.fdmgroup.LotteryWebsite.entities;
 
-import java.sql.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -13,31 +14,46 @@ public class Prize {
 	@Id
 	private int prize_id;
 
-	private int bet_id;
-	private Date draw_date;
+	@OneToOne
+	@JoinColumn(name = "bet_id")
+	private Bet bet;
+	@ManyToOne
+	@JoinColumn(name = "draw_date")
+	private Draw draw;
 
 	private double prize;
 
-	public Prize(int prize_id, int bet_id, Date draw_date, double prize) {
+	public Prize() {
+		super();
+	}
+
+	public Prize(int prize_id, Bet bet, Draw draw, double prize) {
 		super();
 		this.prize_id = prize_id;
-		this.bet_id = bet_id;
-		this.draw_date = draw_date;
+		this.bet = bet;
+		this.draw = draw;
 		this.prize = prize;
 	}
 
 	@Override
 	public String toString() {
-		return "Prize [prize_id=" + prize_id + ", bet_id=" + bet_id + ", draw_date=" + draw_date + ", prize=" + prize
-				+ "]";
+		return "Prize [prize_id=" + prize_id + ", bet=" + bet + ", draw=" + draw + ", prize=" + prize + "]";
 	}
 
-	public Date getDraw_date() {
-		return draw_date;
+	public Bet getBet() {
+		return bet;
 	}
 
-	public void setDraw_date(Date draw_date) {
-		this.draw_date = draw_date;
+	public void setBet(Bet bet) {
+		this.bet = bet;
+	}
+
+	public Draw getDraw() {
+		return draw;
+	}
+
+	public void setDraw(Draw draw) {
+		this.draw = draw;
 	}
 
 	public double getPrize() {
@@ -54,18 +70,6 @@ public class Prize {
 
 	public void setPrize_id(int prize_id) {
 		this.prize_id = prize_id;
-	}
-
-	public int getBet_id() {
-		return bet_id;
-	}
-
-	public void setBet_id(int bet_id) {
-		this.bet_id = bet_id;
-	}
-
-	public Prize() {
-		super();
 	}
 
 }

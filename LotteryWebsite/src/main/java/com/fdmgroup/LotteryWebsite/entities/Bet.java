@@ -3,6 +3,8 @@ package com.fdmgroup.LotteryWebsite.entities;
 import java.sql.Date;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -11,28 +13,32 @@ public class Bet {
 
 	@Id
 	private int bet_id;
-
-	private String username;
+	
+	@ManyToOne
+	@JoinColumn(name="username")
+	private Player player;
+	
 	private Date draw_date;
 	private String main_number;
 	private int powerball_number;
-
-	public Bet(int bet_id, String username, Date draw_date, String main_number, int powerball_number) {
-		super();
-		this.bet_id = bet_id;
-		this.username = username;
-		this.draw_date = draw_date;
-		this.main_number = main_number;
-		this.powerball_number = powerball_number;
-	}
+	
 
 	public Bet() {
 		super();
 	}
 
+	public Bet(int bet_id, Player player, Date draw_date, String main_number, int powerball_number) {
+		super();
+		this.bet_id = bet_id;
+		this.player = player;
+		this.draw_date = draw_date;
+		this.main_number = main_number;
+		this.powerball_number = powerball_number;
+	}
+
 	@Override
 	public String toString() {
-		return "Bet [bet_id=" + bet_id + ", username=" + username + ", draw_date=" + draw_date + ", main_number="
+		return "Bet [bet_id=" + bet_id + ", player=" + player + ", draw_date=" + draw_date + ", main_number="
 				+ main_number + ", powerball_number=" + powerball_number + "]";
 	}
 
@@ -43,13 +49,13 @@ public class Bet {
 	public void setBet_id(int bet_id) {
 		this.bet_id = bet_id;
 	}
-
-	public String getUsername() {
-		return username;
+	
+	public Player getPlayer() {
+		return player;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setPlayer(Player player) {
+		this.player = player;
 	}
 
 	public Date getDraw_date() {

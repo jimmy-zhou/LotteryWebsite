@@ -17,17 +17,9 @@ public class App {
 	public static void main(String[] args) {
 
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("lotteryWebsite");
-		DAO<Player> playerDAO = new DAO<Player>(emf);
-
-		Player p1 = new Player("jimmy66666", "NY", "Jimmy", "Zhou", "welcome123", 5367225573712894L);
-		Player p2 = new Player("codingMaster", "CA", "Darren", "Ng", "passpass", 3769884753129946L);
-		Player p3 = new Player("bigChris", "NJ", "Chris", "Spencer", "shijielong", 4399500021425476L);
-
-		playerDAO.add(p1);
-		playerDAO.add(p2);
-		playerDAO.add(p3);
-
+		
 		DAO<State> stateDAO = new DAO<State>(emf);
+		
 		State s1 = new State("NY", 8.875);
 		State s2 = new State("CA", 10.25);
 		State s3 = new State("NJ", 12.875);
@@ -49,6 +41,14 @@ public class App {
 		stateDAO.add(s8);
 		stateDAO.add(s9);
 		stateDAO.add(s10);
+		
+		DAO<Player> playerDAO = new DAO<Player>(emf);
+
+		Player p1 = new Player("jimmy66666", s1, "Jimmy", "Zhou", "welcome123", "5251074893703553");
+		Player p2 = new Player("shijielong", s2, "Chris", "Spencer", "shijielong", "4716133766294967");
+
+		playerDAO.add(p1);
+		playerDAO.add(p2);
 
 		Calendar calendar = Calendar.getInstance();
 		calendar.set(2018, 10, 03);
@@ -56,9 +56,9 @@ public class App {
 		calendar.set(2018, 10, 10);
 		Date date2 = new Date(calendar.getTime().getTime());
 		DAO<Bet> betDAO = new DAO<Bet>(emf);
-		Bet b1 = new Bet(1, "jimmy66666", date1, pickMainNumber(), pickPowerBallNumber());
-		Bet b2 = new Bet(2, "jimmy66666", date2, pickMainNumber(), pickPowerBallNumber());
-		Bet b3 = new Bet(3, "bigChris", date1, pickMainNumber(), pickPowerBallNumber());
+		Bet b1 = new Bet(1, p1, date1, pickMainNumber(), pickPowerBallNumber());
+		Bet b2 = new Bet(2, p1, date2, pickMainNumber(), pickPowerBallNumber());
+		Bet b3 = new Bet(3, p2, date1, pickMainNumber(), pickPowerBallNumber());
 
 		betDAO.add(b1);
 		betDAO.add(b2);
