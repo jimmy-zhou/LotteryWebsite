@@ -8,8 +8,8 @@
 <title>Home Page</title>
 </head>
 <body>
-	<h1>You have logged in! ${active_user}</h1>
-	<h2>This is your lucky powerball number today: ${lucky_number}</h2>
+	<h1>You have logged in! ${activeUser}</h1>
+	<h2>This is your lucky powerball number today: ${luckyNumber}</h2>
 	 <a href="bet">Make new bet</a>
 </body>
 </html>

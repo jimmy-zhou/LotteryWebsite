@@ -19,7 +19,7 @@ public class LoginServlet extends HttpServlet {
 
 	private static final long serialVersionUID = -1314163141578396190L;
 
-	EntityManagerFactory emf = Persistence.createEntityManagerFactory("lotteryWebsite");
+	private EntityManagerFactory emf = Persistence.createEntityManagerFactory("lotteryWebsite");
 	DAO<Player> playerDAO = new DAO<Player>(emf);
 
 	@Override
@@ -33,14 +33,14 @@ public class LoginServlet extends HttpServlet {
 		String username = req.getParameter("username");
 		String password = req.getParameter("password");
 
-		req.setAttribute("lucky_number", new Random().nextInt(26) + 1);
+		req.setAttribute("luckyNumber", new Random().nextInt(26) + 1);
 
 		Player p = playerDAO.getPlayer(username);
 		RequestDispatcher rd = null;
 		if (p != null && p.getPassword().equals(password)) {
 			rd = req.getRequestDispatcher("home.jsp");
 			HttpSession session = req.getSession();
-			session.setAttribute("active_user", username);
+			session.setAttribute("activeUser", username);
 		} else {
 			rd = req.getRequestDispatcher("block.jsp");
 		}

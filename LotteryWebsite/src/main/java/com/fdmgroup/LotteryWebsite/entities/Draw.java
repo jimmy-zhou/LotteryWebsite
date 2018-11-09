@@ -1,6 +1,8 @@
 package com.fdmgroup.LotteryWebsite.entities;
 
 import java.sql.Date;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -10,60 +12,66 @@ import javax.persistence.Table;
 public class Draw {
 
 	@Id
-	private Date draw_date;
+	@Column(name = "draw_date")
+	private Date drawDate;
 
-	private String main_number;
-	private int powerball_number;
-	private int accumulated_prize;
+	@Column(name = "main_number")
+	private String mainNumber;
 
-	public String getMain_number() {
-		return main_number;
-	}
+	@Column(name = "powerball")
+	private int powerballNumber;
 
-	public void setMain_number(String main_number) {
-		this.main_number = main_number;
-	}
+	@Column(name = "accumulated_prize")
+	private int accumulatedPrize;
 
-	public Draw(Date draw_date, String main_number, int powerball_number, int accumulated_prize) {
+	public Draw() {
 		super();
-		this.draw_date = draw_date;
-		this.main_number = main_number;
-		this.powerball_number = powerball_number;
-		this.accumulated_prize = accumulated_prize;
 	}
 
-	public Date getDraw_date() {
-		return draw_date;
-	}
-
-	public void setDraw_date(Date draw_date) {
-		this.draw_date = draw_date;
+	public Draw(Date drawDate, String mainNumber, int powerballNumber, int accumulatedPrize) {
+		super();
+		this.drawDate = drawDate;
+		this.mainNumber = mainNumber;
+		this.powerballNumber = powerballNumber;
+		this.accumulatedPrize = accumulatedPrize;
 	}
 
 	@Override
 	public String toString() {
-		return "Draw [draw_date=" + draw_date + ", main_number=" + main_number + ", powerball_number="
-				+ powerball_number + ", accumulated_prize=" + accumulated_prize + "]";
+		return "Draw [drawDate=" + drawDate + ", mainNumber=" + mainNumber + ", powerballNumber=" + powerballNumber
+				+ ", accumulatedPrize=" + accumulatedPrize + "]";
 	}
 
-	public int getPowerball_number() {
-		return powerball_number;
+	public Date getDrawDate() {
+		return drawDate;
 	}
 
-	public void setPowerball_number(int powerball_number) {
-		this.powerball_number = powerball_number;
+	public void setDrawDate(Date drawDate) {
+		this.drawDate = drawDate;
 	}
 
-	public int getAccumulated_prize() {
-		return accumulated_prize;
+	public String getMainNumber() {
+		return mainNumber;
 	}
 
-	public void setAccumulated_prize(int accumulated_prize) {
-		this.accumulated_prize = accumulated_prize;
+	public void setMainNumber(String mainNumber) {
+		this.mainNumber = mainNumber;
 	}
 
-	public Draw() {
-		super();
+	public int getPowerballNumber() {
+		return powerballNumber;
+	}
+
+	public void setPowerballNumber(int powerballNumber) {
+		this.powerballNumber = powerballNumber;
+	}
+
+	public int getAccumulatedPrize() {
+		return accumulatedPrize;
+	}
+
+	public void setAccumulatedPrize(int accumulatedPrize) {
+		this.accumulatedPrize = accumulatedPrize;
 	}
 
 }

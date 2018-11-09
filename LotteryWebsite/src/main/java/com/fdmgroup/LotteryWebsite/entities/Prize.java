@@ -1,5 +1,6 @@
 package com.fdmgroup.LotteryWebsite.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -12,7 +13,8 @@ import javax.persistence.Table;
 public class Prize {
 
 	@Id
-	private int prize_id;
+	@Column(name = "prize_id")
+	private int prizeId;
 
 	@OneToOne
 	@JoinColumn(name = "bet_id")
@@ -27,9 +29,9 @@ public class Prize {
 		super();
 	}
 
-	public Prize(int prize_id, Bet bet, Draw draw, double prize) {
+	public Prize(int prizeId, Bet bet, Draw draw, double prize) {
 		super();
-		this.prize_id = prize_id;
+		this.prizeId = prizeId;
 		this.bet = bet;
 		this.draw = draw;
 		this.prize = prize;
@@ -37,7 +39,15 @@ public class Prize {
 
 	@Override
 	public String toString() {
-		return "Prize [prize_id=" + prize_id + ", bet=" + bet + ", draw=" + draw + ", prize=" + prize + "]";
+		return "Prize [prizeId=" + prizeId + ", bet=" + bet + ", draw=" + draw + ", prize=" + prize + "]";
+	}
+
+	public int getPrizeId() {
+		return prizeId;
+	}
+
+	public void setPrizeId(int prizeId) {
+		this.prizeId = prizeId;
 	}
 
 	public Bet getBet() {
@@ -62,14 +72,6 @@ public class Prize {
 
 	public void setPrize(double prize) {
 		this.prize = prize;
-	}
-
-	public int getPrize_id() {
-		return prize_id;
-	}
-
-	public void setPrize_id(int prize_id) {
-		this.prize_id = prize_id;
 	}
 
 }

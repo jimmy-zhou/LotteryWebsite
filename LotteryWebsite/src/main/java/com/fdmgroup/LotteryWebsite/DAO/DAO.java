@@ -30,30 +30,30 @@ public class DAO<T> {
 
 	public Player getPlayer(String username) {
 		EntityManager em = emf.createEntityManager();
-		Player returned_player = em.find(Player.class, username);
+		Player returnedPlayer = em.find(Player.class, username);
 		em.close();
-		return returned_player;
+		return returnedPlayer;
 	}
-	
-	public State getState(String state_name) {
+
+	public State getState(String stateName) {
 		EntityManager em = emf.createEntityManager();
-		State returned_state = em.find(State.class, state_name);
+		State returnedState = em.find(State.class, stateName);
 		em.close();
-		return returned_state;
+		return returnedState;
 	}
-	
-	public Bet getBet(int bet_id) {
+
+	public Bet getBet(int betId) {
 		EntityManager em = emf.createEntityManager();
-		Bet returned_bet = em.find(Bet.class, bet_id);
+		Bet returnedBet = em.find(Bet.class, betId);
 		em.close();
-		return returned_bet;
+		return returnedBet;
 	}
-	
-	public Draw getDraw(Date draw_date) {
+
+	public Draw getDraw(Date drawDate) {
 		EntityManager em = emf.createEntityManager();
-		Draw returned_draw = em.find(Draw.class, draw_date);
+		Draw returnedDraw = em.find(Draw.class, drawDate);
 		em.close();
-		return returned_draw;
+		return returnedDraw;
 	}
 
 }

@@ -1,5 +1,6 @@
 package com.fdmgroup.LotteryWebsite.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -9,39 +10,41 @@ import javax.persistence.Table;
 public class State {
 
 	@Id
-	private String state_name;
-	
-	private double tax_rate;
+	@Column(name = "state_name")
+	private String stateName;
 
-	public State(String state_name, double tax_rate) {
-		super();
-		this.state_name = state_name;
-		this.tax_rate = tax_rate;
-	}
+	@Column(name = "tax_rate")
+	private double taxRate;
 
 	public State() {
 		super();
 	}
 
+	public State(String stateName, double taxRate) {
+		super();
+		this.stateName = stateName;
+		this.taxRate = taxRate;
+	}
+
 	@Override
 	public String toString() {
-		return "State [state_name=" + state_name + ", tax_rate=" + tax_rate + "]";
+		return "State [stateName=" + stateName + ", taxRate=" + taxRate + "]";
 	}
 
-	public double getTax_rate() {
-		return tax_rate;
+	public String getStateName() {
+		return stateName;
 	}
 
-	public void setTax_rate(double tax_rate) {
-		this.tax_rate = tax_rate;
+	public void setStateName(String stateName) {
+		this.stateName = stateName;
 	}
 
-	public String getState_name() {
-		return state_name;
+	public double getTaxRate() {
+		return taxRate;
 	}
 
-	public void setState_name(String state_name) {
-		this.state_name = state_name;
+	public void setTaxRate(double taxRate) {
+		this.taxRate = taxRate;
 	}
 
 }

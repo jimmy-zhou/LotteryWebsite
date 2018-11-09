@@ -1,5 +1,6 @@
 package com.fdmgroup.LotteryWebsite.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -17,55 +18,36 @@ public class Player {
 	@JoinColumn(name = "state_name")
 	private State state;
 
-	private String first_name;
-	private String last_name;
+	@Column(name = "first_name")
+	private String firstName;
 
+	@Column(name = "last_name")
+	private String lastName;
+
+	@Column(nullable = false)
 	private String password;
-	private String credit_card;
 
-	public Player(String username, State state, String first_name, String last_name, String password,
-			String credit_card) {
-		super();
-		this.username = username;
-		this.state = state;
-		this.first_name = first_name;
-		this.last_name = last_name;
-		this.password = password;
-		this.credit_card = credit_card;
-	}
+	@Column(name = "credit_card")
+	private String creditCard;
 
 	public Player() {
 		super();
 	}
 
+	public Player(String username, State state, String firstName, String lastName, String password, String creditCard) {
+		super();
+		this.username = username;
+		this.state = state;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.password = password;
+		this.creditCard = creditCard;
+	}
+
 	@Override
 	public String toString() {
-		return "Player [username=" + username + ", state=" + state + ", first_name=" + first_name + ", last_name="
-				+ last_name + ", password=" + password + ", credit_card=" + credit_card + "]";
-	}
-
-	public State getState() {
-		return state;
-	}
-
-	public void setState(State state) {
-		this.state = state;
-	}
-
-	public String getFirst_name() {
-		return first_name;
-	}
-
-	public void setFirst_name(String first_name) {
-		this.first_name = first_name;
-	}
-
-	public String getLast_name() {
-		return last_name;
-	}
-
-	public void setLast_name(String last_name) {
-		this.last_name = last_name;
+		return "Player [username=" + username + ", state=" + state + ", firstName=" + firstName + ", lastName="
+				+ lastName + ", password=" + password + ", creditCard=" + creditCard + "]";
 	}
 
 	public String getUsername() {
@@ -76,20 +58,44 @@ public class Player {
 		this.username = username;
 	}
 
+	public State getState() {
+		return state;
+	}
+
+	public void setState(State state) {
+		this.state = state;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getCreditCard() {
+		return creditCard;
+	}
+
+	public void setCreditCard(String creditCard) {
+		this.creditCard = creditCard;
+	}
+
 	public String getPassword() {
 		return password;
 	}
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public String getCredit_card() {
-		return credit_card;
-	}
-
-	public void setCredit_card(String credit_card) {
-		this.credit_card = credit_card;
 	}
 
 }
