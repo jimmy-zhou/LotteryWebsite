@@ -7,7 +7,30 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>LotteryWebsite Maven Webapp</name>
 	<url>http://maven.apache.org</url>
+	<properties>
+		<jimmy-spring-version>4.0.1.RELEASE</jimmy-spring-version>
+	</properties>
 	<dependencies>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${jimmy-spring-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-beans</artifactId>
+			<version>${jimmy-spring-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>${jimmy-spring-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${jimmy-spring-version}</version>
+		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>

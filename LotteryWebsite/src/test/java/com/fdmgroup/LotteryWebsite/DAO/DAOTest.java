@@ -184,6 +184,5 @@ public class DAOTest {
 		order.verify(mockEmf).createEntityManager();
 		order.verify(mockEm).find(Draw.class, date);
 		order.verify(mockEm).close();
-
 	}
 }
