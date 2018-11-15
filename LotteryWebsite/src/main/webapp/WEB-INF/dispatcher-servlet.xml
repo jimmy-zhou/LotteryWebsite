@@ -19,4 +19,13 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
 
+	<context:annotation-config></context:annotation-config>
+
+	<bean id="emfBean" class="javax.persistence.Persistence"
+		factory-method="createEntityManagerFactory">
+		<constructor-arg value="lotteryWebsite" />
+	</bean>
+
+	<bean id="playerDAOBean" class="com.fdmgroup.LotteryWebsite.DAO.PlayerDAO" />
+
 </beans>

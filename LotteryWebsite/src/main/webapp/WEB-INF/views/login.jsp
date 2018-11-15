@@ -14,8 +14,10 @@
 	<h2>Login here:</h2>
 	<sf:form action="login" method="POST" modelAttribute="loginPlayer">
 		Username: <sf:input path="username" type="text" />
-		Password: <sf:input path="password" type="text" />
+		Password: <sf:input path="password" type="password" />
 		<input type="submit" value="login">
 	</sf:form>
+	<span style="color: red">${successMsg}</span>
+	<a href="register">Go to register</a>
 </body>
 </html>

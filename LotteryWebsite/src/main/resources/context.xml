@@ -15,5 +15,7 @@
 	</bean>
 
 	<bean id="playerDAOBean" class="com.fdmgroup.LotteryWebsite.DAO.PlayerDAO" />
+	<bean id="playerBean" class="com.fdmgroup.LotteryWebsite.entites.Player" />
+	
 
 </beans>

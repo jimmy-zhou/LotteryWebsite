@@ -8,7 +8,7 @@ import javax.persistence.EntityTransaction;
 import com.fdmgroup.LotteryWebsite.entities.Player;
 
 public class PlayerDAO {
-	
+
 	@Resource(name = "emfBean")
 	private EntityManagerFactory emf;
 
