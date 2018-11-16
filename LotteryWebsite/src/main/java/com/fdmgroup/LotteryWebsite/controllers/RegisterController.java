@@ -1,6 +1,11 @@
 package com.fdmgroup.LotteryWebsite.controllers;
 
+import java.io.IOException;
+
 import javax.annotation.Resource;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -9,17 +14,20 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.fdmgroup.LotteryWebsite.DAO.PlayerDAO;
+import com.fdmgroup.LotteryWebsite.DAO.StateDAO;
 import com.fdmgroup.LotteryWebsite.entities.Player;
 import com.fdmgroup.LotteryWebsite.entities.State;
 
 @Controller
-@SessionAttributes(value="loginPlayer")
+@SessionAttributes(value = "loginPlayer")
 @RequestMapping(value = "/register")
 public class RegisterController {
 
 	@Resource(name = "playerDAOBean")
 	private PlayerDAO playerDAO;
-	
+
+	@Resource(name = "stateDAOBean")
+	private StateDAO stateDAO;
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String goToRegister(Model model) {
@@ -28,10 +36,11 @@ public class RegisterController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public String validateRegister(@ModelAttribute(value="registerPlayer") Player player, Model model) {
+	public String validateRegister(@ModelAttribute(value = "registerPlayer") Player player, Model model,
+			HttpServletRequest req) throws ServletException, IOException {
 		Player foundPlayer = playerDAO.getPlayer(player.getUsername());
-		System.out.println(player);
-		State returnedState = player.getState();
+		String stateName = req.getParameter("stateName");
+		State returnedState = stateDAO.getState(stateName);
 
 		if (foundPlayer != null) {
 			model.addAttribute("errorMsg", "This username has existed, please enter a new one");
@@ -44,6 +53,7 @@ public class RegisterController {
 			foundPlayer = new Player(player.getUsername(), returnedState, player.getFirstName(), player.getLastName(),
 					player.getPassword(), player.getCreditCard());
 			playerDAO.addPlayer(foundPlayer);
+			model.addAttribute("loginPlayer", player);
 			model.addAttribute("successMsg", "You have successfully registered, now please login");
 			return "login";
 		}

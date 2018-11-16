@@ -28,4 +28,8 @@
 
 	<bean id="playerDAOBean" class="com.fdmgroup.LotteryWebsite.DAO.PlayerDAO" />
 
+	<bean id="stateDAOBean" class="com.fdmgroup.LotteryWebsite.DAO.StateDAO" />
+
+	<bean id="betDAOBean" class="com.fdmgroup.LotteryWebsite.DAO.BetDAO" />
+
 </beans>

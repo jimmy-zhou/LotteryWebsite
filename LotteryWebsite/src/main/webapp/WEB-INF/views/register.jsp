@@ -23,7 +23,7 @@
 			placeholder="enter your first name" />
 		<sf:input type="text" path="lastName"
 			placeholder="enter your last name" />
-		<sf:select path="stateName">
+		<select name="stateName">
 			<option value="NY">NY</option>
 			<option value="CA">CA</option>
 			<option value="NJ">NJ</option>
@@ -34,7 +34,7 @@
 			<option value="VA">VA</option>
 			<option value="OR">OR</option>
 			<option value="AZ">AZ</option>
-		</sf:select>
+		</select>
 		<h4></h4>
 		<sf:input type="text" path="creditCard"
 			placeholder="enter your credit card number" />
