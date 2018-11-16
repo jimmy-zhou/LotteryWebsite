@@ -27,7 +27,7 @@ public class BetController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public String makeBet(@ModelAttribute(value = "mybet") Bet bet, Model model) {
+	public String makeBet(@ModelAttribute(value = "myBet") Bet bet, Model model) {
 		model.addAttribute("main", pickMainNumber());
 		model.addAttribute("powerball", pickPowerBallNumber());
 		model.addAttribute("prize", Integer.MAX_VALUE);

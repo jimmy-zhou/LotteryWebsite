@@ -60,7 +60,7 @@ public class RegisterController {
 	}
 
 	// An algorithm to check if the credit card details are valid
-	public static boolean luhnCheck(String creditCard) {
+	public boolean luhnCheck(String creditCard) {
 		if (creditCard == null || creditCard.length() == 0)
 			return false;
 		char checkDigit = creditCard.charAt(creditCard.length() - 1);
@@ -68,7 +68,7 @@ public class RegisterController {
 		return checkDigit == digit.charAt(0);
 	}
 
-	public static String calculateCheckDigit(String creditCard) {
+	public String calculateCheckDigit(String creditCard) {
 		if (creditCard == null)
 			return null;
 		String digit;
