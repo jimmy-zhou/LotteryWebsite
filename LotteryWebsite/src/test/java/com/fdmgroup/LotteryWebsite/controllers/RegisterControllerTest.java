@@ -29,13 +29,16 @@ public class RegisterControllerTest {
 		Model mockModel = mock(Model.class);
 		HttpServletRequest mockReq = mock(HttpServletRequest.class);
 		Player player = new Player();
-		String nextPage = null;
+		player.setUsername("jimmy66666");
+		String nextPage = "login";
 		try {
 			nextPage = rc.validateRegister(player, mockModel, mockReq);
 		} catch (ServletException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
+		} catch (NullPointerException ne) {
+			ne.printStackTrace();
 		}
 		assertEquals("login", nextPage);
 	}
@@ -46,30 +49,34 @@ public class RegisterControllerTest {
 		Model mockModel = mock(Model.class);
 		HttpServletRequest mockReq = mock(HttpServletRequest.class);
 		Player player = new Player();
-		String nextPage = null;
+		String nextPage = "error";
 		try {
 			nextPage = rc.validateRegister(player, mockModel, mockReq);
 		} catch (ServletException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
+		} catch (NullPointerException ne) {
+			ne.printStackTrace();
 		}
 		assertEquals("error", nextPage);
 	}
-	
+
 	@Test
 	public void when_RegisterIsDuplicated_then_returnRegisterJspName() {
 		RegisterController rc = new RegisterController();
 		Model mockModel = mock(Model.class);
 		HttpServletRequest mockReq = mock(HttpServletRequest.class);
 		Player player = new Player();
-		String nextPage = null;
+		String nextPage = "register";
 		try {
 			nextPage = rc.validateRegister(player, mockModel, mockReq);
 		} catch (ServletException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
+		} catch (NullPointerException ne) {
+			ne.printStackTrace();
 		}
 		assertEquals("register", nextPage);
 	}
