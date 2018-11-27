@@ -2,6 +2,8 @@ package com.fdmgroup.LotteryWebsite.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -14,11 +16,13 @@ public class Prize {
 
 	@Id
 	@Column(name = "prize_id")
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int prizeId;
 
 	@OneToOne
 	@JoinColumn(name = "bet_id")
 	private Bet bet;
+
 	@ManyToOne
 	@JoinColumn(name = "draw_date")
 	private Draw draw;
@@ -29,9 +33,8 @@ public class Prize {
 		super();
 	}
 
-	public Prize(int prizeId, Bet bet, Draw draw, double prize) {
+	public Prize(Bet bet, Draw draw, double prize) {
 		super();
-		this.prizeId = prizeId;
 		this.bet = bet;
 		this.draw = draw;
 		this.prize = prize;
@@ -44,10 +47,6 @@ public class Prize {
 
 	public int getPrizeId() {
 		return prizeId;
-	}
-
-	public void setPrizeId(int prizeId) {
-		this.prizeId = prizeId;
 	}
 
 	public Bet getBet() {

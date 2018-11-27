@@ -4,6 +4,8 @@ import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -15,6 +17,7 @@ public class Bet {
 
 	@Id
 	@Column(name = "bet_id")
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int betId;
 
 	@ManyToOne
@@ -34,9 +37,8 @@ public class Bet {
 		super();
 	}
 
-	public Bet(int betId, Player player, Date drawDate, String mainNumber, int powerballNumber) {
+	public Bet(Player player, Date drawDate, String mainNumber, int powerballNumber) {
 		super();
-		this.betId = betId;
 		this.player = player;
 		this.drawDate = drawDate;
 		this.mainNumber = mainNumber;
@@ -51,10 +53,6 @@ public class Bet {
 
 	public int getBetId() {
 		return betId;
-	}
-
-	public void setBetId(int betId) {
-		this.betId = betId;
 	}
 
 	public Player getPlayer() {

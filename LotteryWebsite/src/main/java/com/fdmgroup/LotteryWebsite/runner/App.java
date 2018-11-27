@@ -1,4 +1,4 @@
-package com.fdmgroup.LotteryWebsite;
+package com.fdmgroup.LotteryWebsite.runner;
 
 import java.sql.Date;
 import java.util.Calendar;
@@ -56,9 +56,9 @@ public class App {
 		calendar.set(2018, 10, 10);
 		Date date2 = new Date(calendar.getTime().getTime());
 		DAO<Bet> betDAO = new DAO<Bet>(emf);
-		Bet b1 = new Bet(1, p1, date1, pickMainNumber(), pickPowerBallNumber());
-		Bet b2 = new Bet(2, p1, date2, pickMainNumber(), pickPowerBallNumber());
-		Bet b3 = new Bet(3, p2, date1, pickMainNumber(), pickPowerBallNumber());
+		Bet b1 = new Bet(p1, date1, pickMainNumber(), pickPowerBallNumber());
+		Bet b2 = new Bet(p1, date2, pickMainNumber(), pickPowerBallNumber());
+		Bet b3 = new Bet(p2, date1, pickMainNumber(), pickPowerBallNumber());
 
 		betDAO.add(b1);
 		betDAO.add(b2);

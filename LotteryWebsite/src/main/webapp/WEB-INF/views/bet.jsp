@@ -22,5 +22,6 @@
 		Good luck!</span>
 	<h2></h2>
 	<span style="color: blue">Your pick is ${pick} Jackpot!</span>
+	<a href="logout">Logout</a>
 </body>
 </html>

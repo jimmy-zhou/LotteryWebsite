@@ -8,7 +8,7 @@
 	<name>LotteryWebsite Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 	<properties>
-		<jimmy-spring-version>4.0.1.RELEASE</jimmy-spring-version>
+		<jimmy-spring-version>4.3.17.RELEASE</jimmy-spring-version>
 	</properties>
 	<dependencies>
 		<dependency>
